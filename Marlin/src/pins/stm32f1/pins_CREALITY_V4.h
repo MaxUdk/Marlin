@@ -159,6 +159,27 @@
   #error "Define RET6_12864_LCD or VET6_12864_LCD to select pins for CR10_STOCKDISPLAY with the Creality V4 controller."
 #endif
 
+#if ENABLED(ENDER2_STOCKDISPLAY) && NONE(RET6_12864_LCD, VET6_12864_LCD)
+
+#undef DOGLCD_CS
+#undef DOGLCD_A0
+#undef DOGLCD_SCK
+#undef DOGLCD_MOSI
+
+#define DOGLCD_CS PB12
+#define DOGLCD_A0 PB13
+
+#define DOGLCD_SCK PC6
+#define DOGLCD_MOSI PB15
+
+#define BTN_EN1 PB10
+#define BTN_EN2 PB14
+#define BTN_ENC PB2
+
+#define FORCE_SOFT_SPI
+#define LCD_BACKLIGHT_PIN -1
+#endif
+
 #if ENABLED(RET6_12864_LCD)
 
   // RET6 12864 LCD
